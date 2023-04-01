@@ -1,0 +1,11 @@
+package org.drools.demo;
+
+query siblings
+    accumulate(
+        Parent( $p : parent ); $parents: collectSet($p)
+    )
+    $pName: String() from $parents
+    accumulate(
+        Parent( parent == $pName, $c: child ); $siblings: collectSet($c)
+    )
+end
